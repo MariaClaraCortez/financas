@@ -23,3 +23,5 @@ class Conexao:
         except BaseException as erro:
             print (f"ERRO: {erro}")
             return None,None
+
+
