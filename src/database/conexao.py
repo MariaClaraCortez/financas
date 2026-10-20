@@ -17,7 +17,7 @@ class Conexao:
                 database = "financas"
             )
 
-            cursor = conexao.cursor()
+            cursor = conexao.cursor(dictionary=True)
 
             return conexao, cursor
         except BaseException as erro:
