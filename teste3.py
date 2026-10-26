@@ -1,3 +1,3 @@
 from src.model.categoria_model import Categoria
-categorias= Categoria().adicionar("Laura","viagem")
-print(categorias)
+id_categoria= Categoria().adicionar("Laura","viagem")
+print(id_categoria)

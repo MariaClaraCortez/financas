@@ -9,14 +9,24 @@ class Categoria:
         conexao,cursor = Conexao().conectar()
         
         if not conexao:
-            print("ERRO AO TENTAR ADICIONAR")
+            print("ERRO AO TENTAR CONECTAR")
             return None
         
-        cursor.execute("""
-                        INSERT INTO tb_categorias (login,tipo) 
-                       VALUES(%s,%s)
-                       """,
-                       [login,tipo])
+        try:
+            cursor.execute("""
+                            INSERT INTO tb_categorias (login,tipo) 
+                        VALUES(%s,%s)
+                        """,
+                        [login,tipo])
+            id_categoria = cursor.lastrowid
+            conexao.commit()
+            conexao.close()
+            return id_categoria
+        except Exception as erro:
+            print(f"ERRO AO INSERIR: {erro}")
+            return False
+
+        
         
 
 
@@ -26,12 +36,16 @@ class Categoria:
         conexao,cursor = Conexao().conectar()
 
         if not conexao:
-            print("ERRO AO TENTAR RECUPERAR")
+            print("ERRO AO TENTAR CONECTAR")
             return None
         
         cursor.execute("""
                         SELECT login,tipo from tb_categorias
                     """)
+        
+        dados = cursor.fetchall()
+        
+        return dados
  
 
     @staticmethod
@@ -39,7 +53,7 @@ class Categoria:
         conexao,cursor = Conexao().conectar()
 
         if not conexao:
-            print("ERRO AO EXCLUIR")
+            print("ERRO AO CONECTAR")
             return False
         
         cursor.execute("""
