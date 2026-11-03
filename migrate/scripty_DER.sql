@@ -16,8 +16,8 @@ CREATE TABLE if not exists tb_categorias (
 );
 
 
-CREATE TABLE if not exists tb_dispesas (
- id_dispesa SMALLINT auto_increment primary KEY,
+CREATE TABLE if not exists tb_despesas (
+ id_despesa SMALLINT auto_increment primary KEY,
  id_categoria SMALLINT NOT NULL,
  valor DECIMAL(30,2),
  descricao VARCHAR(200),
