@@ -18,7 +18,7 @@ INSERT INTO tb_categorias (login, tipo) VALUES
 ('BeatrizLima', 'Transporte');    
 
 
-INSERT INTO tb_dispesas (id_categoria, valor, descricao, data, hora) VALUES 
+INSERT INTO tb_despesas (id_categoria, valor, descricao, data, hora) VALUES 
 (1, 5.00, 'Passagem de ônibus', '2026-09-10', '08:30:00'),
 (1, 45.00, 'Recarga de bilhete único', '2026-09-15', '09:10:00'),
 (2, 25.50, 'Almoço no restaurante', '2026-09-10', '12:15:00'),
