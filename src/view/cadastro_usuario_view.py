@@ -1,4 +1,4 @@
-
+from src.model.usuario_model import Usuario
 import flet as ft
 class CadastroUsuarioView(ft.View):
     def __init__(self,pagina:ft.Page):
@@ -15,13 +15,13 @@ class CadastroUsuarioView(ft.View):
                         weight=ft.FontWeight.BOLD,
                         color="#395F4A")
         
-        campo_novo_usuario = ft.TextField(label="Novo Usuário",
+        self.campo_novo_usuario = ft.TextField(label="Novo Usuário",
                                 border_color="#609E7C",
                                 border_radius=10,
                                 border_width=2.5,
                                 margin=10)
         
-        campo_nova_senha = ft.TextField(label="Senha",
+        self.campo_nova_senha = ft.TextField(label="Senha",
                                 border_color="#609E7C",
                                 border_radius=10,
                                 border_width=2.5,
@@ -31,7 +31,8 @@ class CadastroUsuarioView(ft.View):
         botao_cadastrar = ft.Button(content="Cadastrar",
                       color="#263F31",
                       bgcolor="#9FC5B0",
-                      width=170)
+                      width=170,
+                      on_click=self.cadastrar)
         
         voltar_login = ft.Button(content="Voltar para Login",
                       color="#263F31",
@@ -39,7 +40,16 @@ class CadastroUsuarioView(ft.View):
                       width=170)
 
         self.controls = [titulo, 
-                         campo_novo_usuario,
-                         campo_nova_senha,
+                         self.campo_novo_usuario,
+                         self.campo_nova_senha,
                          botao_cadastrar,
                          voltar_login]
+
+
+
+    def cadastrar(self):
+        usuario = self.campo_novo_usuario.value
+        senha = self.campo_nova_senha.value
+        Usuario().cadastrar(usuario,senha)
+
+
