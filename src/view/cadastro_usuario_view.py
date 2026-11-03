@@ -3,6 +3,7 @@ import flet as ft
 class CadastroUsuarioView(ft.View):
     def __init__(self,pagina:ft.Page):
         super().__init__()
+        
 
         self.bgcolor ="#DFEBE4"
         self.horizontal_alignment ="center"

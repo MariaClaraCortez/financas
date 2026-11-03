@@ -6,4 +6,5 @@ def main(pagina:ft.Page):
 
     pagina.views.append(tela_cadastro_usuario)
 
+
 ft.run(main)
