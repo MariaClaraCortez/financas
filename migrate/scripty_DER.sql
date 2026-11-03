@@ -18,13 +18,15 @@ CREATE TABLE if not exists tb_categorias (
 
 CREATE TABLE if not exists tb_despesas (
  id_despesa SMALLINT auto_increment primary KEY,
+ login VARCHAR(120) NOT NULL,
  id_categoria SMALLINT NOT NULL,
  valor DECIMAL(30,2),
  descricao VARCHAR(200),
  data DATE,
  hora TIME(6),
 
- FOREIGN KEY (id_categoria) REFERENCES tb_categorias (id_categoria)
+ FOREIGN KEY (id_categoria) REFERENCES tb_categorias (id_categoria),
+ FOREIGN KEY (login) REFERENCES tb_usuarios (login)
 );
 
 

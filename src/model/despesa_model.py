@@ -15,7 +15,7 @@ class Despesa:
         try:
             cursor.execute("""
                             INSERT INTO tb_despesas (login,id_categoria,descricao,valor,data,hora) 
-                        VALUES(%s,%s,%s,%s,%s,%s)
+                        VALUES (%s,%s,%s,%s,%s,%s)
                         """,
                         [login,id_categoria,descricao,valor,data,hora])
             id_despesa = cursor.lastrowid
@@ -92,7 +92,7 @@ class Despesa:
 
 
     @staticmethod
-    def incluir(id_despesa:int,login:str,id_categoria:int,descricao:str,valor:float,data:str,hora:str) -> bool:
+    def alterar(id_despesa:int,login:str,id_categoria:int,descricao:str,valor:float,data:str,hora:str) -> bool:
         conexao,cursor = Conexao().conectar()
         
         if not conexao:
@@ -114,7 +114,7 @@ class Despesa:
             id = cursor.lastrowid
             conexao.commit()
             conexao.close()
-            return id
+            return True
         except Exception as erro:
             print(f"ERRO AO INSERIR: {erro}")
             return False
