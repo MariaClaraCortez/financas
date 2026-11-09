@@ -16,17 +16,5 @@ class LoginUsuarioView(ft.View):
                         weight=ft.FontWeight.BOLD,
                         color="#395F4A")
         
-        self.campo_login_usuario = ft.TextField(label="Novo Usuário",
-                                border_color="#609E7C",
-                                border_radius=10,
-                                border_width=2.5,
-                                margin=10)
-        
-        self.campo_login_senha = ft.TextField(label="Senha",
-                                border_color="#609E7C",
-                                border_radius=10,
-                                border_width=2.5,
-                                password=True,
-                                can_reveal_password=True)
         
         self.controls=[titulo]
