@@ -38,7 +38,7 @@ class LoginUsuarioView(ft.View):
                               color="#263F31",
                               bgcolor="#9FC5B0",
                               width=210,
-                              on_click=self.voltar_cadastro)
+                              on_click=self.verificar)
                 
         ir_cadastrar = ft.Button(content="Cadastrar Novo Usuário",
                               color="#263F31",
@@ -52,9 +52,22 @@ class LoginUsuarioView(ft.View):
                                  botao_entrar,
                                  ir_cadastrar]
         
-        
-        
-        
-        
+
     async def voltar_cadastro(self):
         await self.pagina.push_route("/cadastro")
+
+    async def verificar(self):
+        usuario = self.campo_usuario.value
+        senha = self.campo_senha.value
+        if usuario == "" or senha == "":
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Preencha os campos!",), bgcolor="#bd101c")) 
+            return
+
+        resultado = Usuario().verificar(usuario,senha)
+        if resultado == False:
+            self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao entar. Entre em contato com o adiministrador"), bgcolor="#bd101c"))
+
+        await self.entrar()
+
+    async def entrar(self):
+        await self.pagina.push_route("/principal")
