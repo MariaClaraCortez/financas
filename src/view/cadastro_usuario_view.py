@@ -33,13 +33,14 @@ class CadastroUsuarioView(ft.View):
         botao_cadastrar = ft.Button(content="Cadastrar",
                       color="#263F31",
                       bgcolor="#9FC5B0",
-                      width=170,
+                      width=210,
                       on_click=self.cadastrar)
         
         voltar_login = ft.Button(content="Voltar para Login",
                       color="#263F31",
                       bgcolor="#9FC5B0",
-                      width=170)
+                      width=210,
+                      on_click=self.voltar_login)
 
         self.controls = [titulo, 
                          self.campo_novo_usuario,
@@ -63,5 +64,5 @@ class CadastroUsuarioView(ft.View):
         else:
             self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao cadastrar. Entre em contato com o adiministrador"), bgcolor="#bd101c"))
 
-    def ir_para_login():
-        
+    async def voltar_login(self):
+        await self.pagina.push_route("/login")

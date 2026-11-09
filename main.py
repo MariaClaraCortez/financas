@@ -20,5 +20,6 @@ def main(pagina:ft.Page):
     roteamento()
 
     pagina.views.append(tela_cadastro_usuario)
+    
 
 ft.run(main)
