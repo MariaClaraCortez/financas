@@ -51,6 +51,10 @@ class CadastroUsuarioView(ft.View):
     def cadastrar(self):
         usuario = self.campo_novo_usuario.value
         senha = self.campo_nova_senha.value
+
+        if usuario == "" or senha == "":
+           self.pagina.show_dialog(ft.SnackBar(ft.Text("Preencha os campos!"), bgcolor="#F72E2E")) 
+           return
         # caso oq estiver no if seje True 
         if Usuario().cadastrar(usuario,senha):
             self.pagina.show_dialog(ft.SnackBar(ft.Text("Cadastro efetuado com sucesso!"), bgcolor="#55DA67"))
