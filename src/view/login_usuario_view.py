@@ -21,14 +21,16 @@ class LoginUsuarioView(ft.View):
                                 border_color="#609E7C",
                                 border_radius=10,
                                 border_width=2.5,
-                                margin=10)
+                                margin=10,
+                                prefix_icon=ft.Icons.PERSON_OUTLINED)
         
         self.campo_login_senha = ft.TextField(label="Senha",
                                 border_color="#609E7C",
                                 border_radius=10,
                                 border_width=2.5,
                                 password=True,
-                                can_reveal_password=True)
+                                can_reveal_password=True,
+                                prefix_icon=ft.Icons.LOCK)
         
         botao_entrar = ft.Button(content="Entrar",
                       color="#263F31",
@@ -36,18 +38,31 @@ class LoginUsuarioView(ft.View):
                       width=210,
                       on_click=self.verificar)
         
-        ir_cadastrar = ft.Button(content="Cadastrar Novo Usuário",
-                      color="#263F31",
-                      bgcolor="#9FC5B0",
-                      width=210,
-                      on_click=self.ir_cadastro)
+        txt_cadastrar = ft.Text(value='Não tem uma conta? ')
+        
+        ir_cadastrar = ft.Button(content=ft.Text('Cadastre-se',
+                                style=ft.TextStyle(decoration=ft.TextDecoration.UNDERLINE, 
+                                                   decoration_color="#569170")),
+                                color="#47775C",
+                                bgcolor='transparent',
+                                elevation=0,
+                                on_click=self.ir_cadastro)
+        
+        linha_cadastrar = ft.Row(controls=[txt_cadastrar, ir_cadastrar], width=300, alignment=ft.CrossAxisAlignment.CENTER)
         
         
-        self.controls=[titulo,
-                       self.campo_login_usuario,
-                       self.campo_login_senha,
-                       botao_entrar,
-                       ir_cadastrar]
+        container_campo = ft.Container(content=ft.Column(controls=[titulo,
+                                                                   self.campo_login_usuario,
+                                                                   self.campo_login_senha,
+                                                                   botao_entrar,
+                                                                   linha_cadastrar], alignment="center",
+                                                                   horizontal_alignment="center",),
+                                                                   bgcolor="#FCFDFB",
+                                                                   width=400,
+                                                                   height=450,
+                                                                   border_radius=40)
+
+        self.controls = [container_campo]
         
 
     async def verificar(self):

@@ -10,7 +10,7 @@ class PrincipalUsuarioView(ft.View):
         
         self.vertical_alignment = "center"
 
-        titulo = ft.Text(value="Página Principal do Usuário",
+        titulo = ft.Text(value="Seja Bem Vindo ao seu Controle de Despesas Pessoal",
                         size = 25,
                         font_family="Georgia",
                         weight=ft.FontWeight.BOLD,
