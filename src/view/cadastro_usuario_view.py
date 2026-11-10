@@ -17,6 +17,12 @@ class CadastroUsuarioView(ft.View):
                         weight=ft.FontWeight.BOLD,
                         color="#395F4A")
         
+        titulo = ft.Text(value="Cadastro de Usuário",
+                        size = 25,
+                        font_family="Georgia",
+                        weight=ft.FontWeight.BOLD,
+                        color="#395F4A")
+        
         self.campo_novo_usuario = ft.TextField(label="Novo Usuário",
                                 border_color="#609E7C",
                                 border_radius=10,

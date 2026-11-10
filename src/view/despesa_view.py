@@ -17,4 +17,6 @@ class DespesaView(ft.View):
                         weight=ft.FontWeight.BOLD,
                         color="#395F4A")
         
+        
+        
         self.controls = [titulo]

@@ -28,7 +28,7 @@ def main(pagina:ft.Page):
 
     barra_vagegacao = ft.NavigationBar(destinations=[
                                         ft.NavigationBarDestination(icon=ft.Icons.HOME, label="Principal"),
-                                        ft.NavigationBarDestination(icon=ft.Icons.CATEGORY, label="Caregoria"),
+                                        ft.NavigationBarDestination(icon=ft.Icons.CATEGORY, label="Categoria"),
                                         ft.NavigationBarDestination(icon=ft.Icons.ADD_SHOPPING_CART, label="Adicionar Despesa"),
                                         ft.NavigationBarDestination(icon=ft.Icons.ATTACH_MONEY_OUTLINED, label="Despesa"),
                                         ft.NavigationBarDestination(icon=ft.Icons.FEED_OUTLINED, label="Despesa por Categoria"),
@@ -93,6 +93,6 @@ def main(pagina:ft.Page):
     # quando a pagina mudar de rota
     pagina.on_route_change = roteamento
     roteamento()
-    pagina.navigate("/login")
+    pagina.navigate("/categoria")
 
 ft.run(main)
