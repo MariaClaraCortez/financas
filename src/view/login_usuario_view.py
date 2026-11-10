@@ -74,6 +74,7 @@ class LoginUsuarioView(ft.View):
         resultado = Usuario().verificar(usuario,senha)
 
         if resultado:
+            self.pagina.session.store.set("usuario_logado",resultado)
             await self.entrar()
         else:
             self.pagina.show_dialog(ft.SnackBar(ft.Text("Erro ao entrar. Entre em contato com o adiministrador"), bgcolor="#e0101f"))

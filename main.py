@@ -38,49 +38,61 @@ def main(pagina:ft.Page):
 
 
 
-    tela_cadastro_usuario = CadastroUsuarioView(pagina)
-    tela_login_usuario = LoginUsuarioView(pagina)
-    tela_principal_usuario = PrincipalUsuarioView(pagina)
-    tela_add_despesa = AddDespesaView(pagina)
-    tela_despesa = DespesaView(pagina)
-    tela_despesa_categoria = DespesaPorCategoriaView(pagina)
-    tela_categoria = CategoriaView(pagina)
-    tela_principal_usuario.navigation_bar = barra_vagegacao
-    tela_add_despesa.navigation_bar = barra_vagegacao
-    tela_despesa.navigation_bar = barra_vagegacao
-    tela_despesa_categoria.navigation_bar = barra_vagegacao
-    tela_categoria.navigation_bar = barra_vagegacao
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     def roteamento(e=None):
         pagina.views.clear()
 
         if pagina.route == "/cadastro":
+            tela_cadastro_usuario = CadastroUsuarioView(pagina)
             pagina.views.append(tela_cadastro_usuario)
 
         elif pagina.route == "/login":
+            tela_login_usuario = LoginUsuarioView(pagina)
             pagina.views.append(tela_login_usuario)
 
         elif pagina.route == "/principal":
+            tela_principal_usuario = PrincipalUsuarioView(pagina)
+            tela_principal_usuario.navigation_bar = barra_vagegacao
             pagina.views.append(tela_principal_usuario)
         
         elif pagina.route == "/add_despesa":
+            tela_add_despesa = AddDespesaView(pagina)
+            tela_add_despesa.navigation_bar = barra_vagegacao
             pagina.views.append(tela_add_despesa)
 
         elif pagina.route == "/despesa":
+            tela_despesa = DespesaView(pagina)
+            tela_despesa.navigation_bar = barra_vagegacao
             pagina.views.append(tela_despesa)
 
         elif pagina.route == "/despesa_categoria":
+            tela_despesa_categoria = DespesaPorCategoriaView(pagina)
+            tela_despesa_categoria.navigation_bar = barra_vagegacao
             pagina.views.append(tela_despesa_categoria)
 
         elif pagina.route == "/categoria":
+            tela_categoria = CategoriaView(pagina)
+            tela_categoria.navigation_bar = barra_vagegacao
             pagina.views.append(tela_categoria)
-
+ 
 
         pagina.update()
 
     # quando a pagina mudar de rota
     pagina.on_route_change = roteamento
     roteamento()
-    pagina.views.append(tela_login_usuario)
+    pagina.navigate("/login")
 
 ft.run(main)
