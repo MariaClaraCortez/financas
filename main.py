@@ -37,20 +37,6 @@ def main(pagina:ft.Page):
                                         on_change=navegacao)
 
 
-
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
     def roteamento(e=None):
         pagina.views.clear()
 

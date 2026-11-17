@@ -41,7 +41,7 @@ class Categoria:
         
         try:
             cursor.execute("""
-                            SELECT login,tipo from tb_categorias
+                            SELECT login,tipo,id_categoria from tb_categorias
                            WHERE login = %s
                         """,[login])
             

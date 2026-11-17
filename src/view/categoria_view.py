@@ -60,23 +60,25 @@ class CategoriaView(ft.View):
                         font_family="Georgia",
                         weight=ft.FontWeight.BOLD,
                         color="#395F4A",
-                        text_align="center")
+                        text_align="center",
+                        margin=10)
 
         self.lista_categorias=[]
 
-        container_existentes = ft.Container(content=ft.Column(controls=[subtitulo,self.lista_categorias],
-                                                              horizontal_alignment="center",),
+        container_existentes = ft.Container(content=ft.Column(controls=[subtitulo,
+                                                            ft.Column(controls= self.lista_categorias)],
+                                                                      alignment="top", horizontal_alignment="center"),
                                                               width=1890,
                                                               height=740,
                                                               border_radius=10,
                                                               bgcolor="#DBE6E0")
 
-        coluna_existentes = ft.Column(controls=[subtitulo,self.lista_categorias])
+
 
         self.atualizar_lista()
 
         self.controls = [container_cadastrar,
-                         coluna_existentes]
+                         container_existentes]
 
 
     def cadastra_categoria(self):
@@ -93,9 +95,35 @@ class CategoriaView(ft.View):
 
     def atualizar_lista(self):
         categorias = Categoria().recuperar_todos(self.nome_usuario)
+        self.lista_categorias.clear() 
+
         for categoria in categorias:
             nome_categoria =categoria.get("tipo")
-            campo_tipo = ft.Text(value=nome_categoria)
-            self.lista_categorias.append(campo_tipo)
+            id_categoria = categoria.get("id_categoria") 
+
+            botao_excluir = ft.FloatingActionButton(icon=ft.Icon(icon=ft.Icons.DELETE_FOREVER_ROUNDED,
+                                                                 color= "#263F31",),
+                                                                 bgcolor="#9FC5B0",
+                                                                 width=45,
+                                                                 height=40,
+                                                                 on_click=self.excluir,
+                                                                 key=id_categoria)
+            
+            campo_tipo = ft.TextField(value=nome_categoria,
+                                      border_color="#518367",
+                                      border_radius=10,
+                                      border_width=2.5,
+                                      margin=3,
+                                      read_only=True,
+                                      text_align="center")
+            
+            linha_campinhos= ft.Row(controls=[campo_tipo,botao_excluir], alignment=ft.MainAxisAlignment.CENTER)
+
+            self.lista_categorias.append(linha_campinhos)
         self.pagina.update()
+
+    def excluir(self,e):
+        id_categoria = e.control.key
+        Categoria().excluir(id_categoria)
+        self.atualizar_lista()
 
