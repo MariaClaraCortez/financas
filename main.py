@@ -93,6 +93,6 @@ def main(pagina:ft.Page):
     # quando a pagina mudar de rota
     pagina.on_route_change = roteamento
     roteamento()
-    pagina.navigate("/categoria")
+    pagina.navigate("/login")
 
 ft.run(main)
