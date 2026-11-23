@@ -1,4 +1,4 @@
-from src.model.usuario_model import Usuario
+
 from src.model.categoria_model import Categoria
 import flet as ft
 class CategoriaView(ft.View):

@@ -1,4 +1,4 @@
-from src.model.usuario_model import Usuario
+from src.model.despesa_model import Despesa
 import flet as ft
 class DespesaView(ft.View):
     def __init__(self,pagina:ft.Page):
@@ -11,11 +11,12 @@ class DespesaView(ft.View):
         
         self.vertical_alignment = "center"
 
-        titulo = ft.Text(value="Despesa",
-                        size = 25,
+        titulo = ft.Text(value="Despesa do Usuário",
+                        size = 35,
                         font_family="Georgia",
                         weight=ft.FontWeight.BOLD,
-                        color="#395F4A")
+                        color="#395F4A",
+                        text_align="center")
         
         
         

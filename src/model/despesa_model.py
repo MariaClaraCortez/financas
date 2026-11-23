@@ -5,7 +5,7 @@ class Despesa:
         pass
 
     @staticmethod
-    def incluir(login:str,id_categoria:int,descricao:str,valor:float,data:str,hora:str) -> int:
+    def incluir(login:str,id_categoria:int,descricao:str,valor:float,data:str) -> int:
         conexao,cursor = Conexao().conectar()
         
         if not conexao:
@@ -14,10 +14,10 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            INSERT INTO tb_despesas (login,id_categoria,descricao,valor,data,hora) 
-                        VALUES (%s,%s,%s,%s,%s,%s)
+                            INSERT INTO tb_despesas (login,id_categoria,descricao,valor,data) 
+                        VALUES (%s,%s,%s,%s,%s)
                         """,
-                        [login,id_categoria,descricao,valor,data,hora])
+                        [login,id_categoria,descricao,valor,data])
             id_despesa = cursor.lastrowid
             conexao.commit()
             conexao.close()
@@ -37,7 +37,7 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            SELECT login,id_categoria,descricao,valor,data,hora from tb_despesas
+                            SELECT login,id_categoria,descricao,valor,data from tb_despesas
                            WHERE login = %s
                         """,[login])
             
@@ -59,7 +59,7 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            SELECT login,id_categoria,descricao,valor,data,hora from tb_despesas
+                            SELECT login,id_categoria,descricao,valor,data from tb_despesas
                            WHERE login = %s AND id_categoria = %s
                         """,[login,id_categoria])
             
@@ -92,7 +92,7 @@ class Despesa:
 
 
     @staticmethod
-    def alterar(id_despesa:int,login:str,id_categoria:int,descricao:str,valor:float,data:str,hora:str) -> bool:
+    def alterar(id_despesa:int,login:str,id_categoria:int,descricao:str,valor:float,data:str) -> bool:
         conexao,cursor = Conexao().conectar()
         
         if not conexao:
@@ -105,12 +105,11 @@ class Despesa:
                            descricao = %s,
                            valor = %s,
                            data = %s,
-                           hora = %s
                            WHERE
                            id_despesa = %s
                            AND login = %s;
                         """,
-                        [id_categoria,descricao,valor,data,hora,id_despesa,login])
+                        [id_categoria,descricao,valor,data,id_despesa,login])
             id = cursor.lastrowid
             conexao.commit()
             conexao.close()
