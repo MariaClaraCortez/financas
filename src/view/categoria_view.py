@@ -49,7 +49,7 @@ class CategoriaView(ft.View):
         linha_cadastrar = ft.Row(controls=[self.campo_cadastrar,botao_salvar], width=450) 
         
         container_cadastrar = ft.Container(content=ft.Column(controls=[titulo_com_linhas,
-                                                                   linha_cadastrar],
+                                                                        linha_cadastrar],
                                                                         alignment="center",
                                                                         horizontal_alignment="center",),
                                                                         width=5000,
@@ -91,7 +91,9 @@ class CategoriaView(ft.View):
         else:
             self.pagina.show_dialog(ft.SnackBar(ft.Text("ERRO AO CADASTRAR"), bgcolor="#e0101f"))
 
+        self.campo_cadastrar.value = ""
         self.atualizar_lista()
+        
 
     def atualizar_lista(self):
         categorias = Categoria().recuperar_todos(self.nome_usuario)
