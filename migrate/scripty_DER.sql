@@ -23,7 +23,6 @@ CREATE TABLE if not exists tb_despesas (
  valor DECIMAL(30,2),
  descricao VARCHAR(200),
  data DATE,
- hora TIME(6),
 
  FOREIGN KEY (id_categoria) REFERENCES tb_categorias (id_categoria),
  FOREIGN KEY (login) REFERENCES tb_usuarios (login)
