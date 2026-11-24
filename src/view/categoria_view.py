@@ -13,6 +13,7 @@ class CategoriaView(ft.View):
 
         dados_usuario = pagina.session.store.get("usuario_logado")
         self.nome_usuario = dados_usuario.get("login") 
+
         
 
         titulo = ft.Text(value="Categoria",
@@ -31,7 +32,8 @@ class CategoriaView(ft.View):
                                                           ft.Container(content=titulo),
                                                           ft.Container(expand=True,
                                                                        height=0.5,
-                                                                       bgcolor="#395F4A")])
+                                                                       bgcolor="#395F4A")],
+                                                                       margin=ft.Margin.only(bottom=20))
 
         
         self.campo_cadastrar = ft.TextField(label="Nome da Categoria",
