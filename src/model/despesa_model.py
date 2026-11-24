@@ -37,7 +37,7 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            SELECT tb_despesas.login,tb_categorias.tipo,tb_despesas.descricao,tb_despesas.valor,tb_despesas.data from tb_despesas
+                            SELECT tb_despesas.login,tb_categorias.tipo,tb_despesas.descricao,tb_despesas.valor,tb_despesas.data,tb_despesas.id_despesa from tb_despesas
                             inner join tb_categorias on tb_categorias.id_categoria = tb_despesas.id_categoria
                             WHERE tb_despesas.login = %s
                         """,[login])

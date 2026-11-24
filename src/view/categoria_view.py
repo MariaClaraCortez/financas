@@ -13,6 +13,7 @@ class CategoriaView(ft.View):
 
         dados_usuario = pagina.session.store.get("usuario_logado")
         self.nome_usuario = dados_usuario.get("login") 
+
         
 
         titulo = ft.Text(value="Categoria",

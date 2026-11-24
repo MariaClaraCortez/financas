@@ -36,7 +36,8 @@ class DespesaView(ft.View):
 
        
 
-        tabela_despesas = ft.DataTable(columns=[ft.DataColumn(label=ft.Text("Categoria",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
+        tabela_despesas = ft.DataTable(columns=[ft.DataColumn(label=ft.Text("ID despesa",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
+                                                ft.DataColumn(label=ft.Text("Categoria",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
                                                 ft.DataColumn(label=ft.Text("Descrição",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
                                                 ft.DataColumn(label=ft.Text("Valor",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
                                                 ft.DataColumn(label=ft.Text("Data",size=16,weight=ft.FontWeight.BOLD,font_family="Georgia")),
@@ -54,7 +55,8 @@ class DespesaView(ft.View):
        self.lista_despesas.clear() 
 
        for despesas in todos:
-            linha= ft.DataRow(cells=[ft.DataCell(ft.Text(str(despesas.get("tipo")),text_align="center", size=17)),
+            linha= ft.DataRow(cells=[ft.DataCell(ft.Text(str(despesas.get("id_despesa")),text_align="center", size=17)),
+                            ft.DataCell(ft.Text(str(despesas.get("tipo")),text_align="center", size=17)),
                             ft.DataCell(ft.Text(str(despesas.get("descricao")),text_align="center", size=17)),
                             ft.DataCell(ft.Text(str(despesas.get("valor")),text_align="center", size=17)),
                             ft.DataCell(ft.Text(str(despesas.get("data")),text_align="center", size=17)),
@@ -63,7 +65,7 @@ class DespesaView(ft.View):
                                                                                  bgcolor="#9FC5B0",
                                                                                  width=45,
                                                                                  height=40,
-                                                                                 key = self.nome_usuario,
+                                                                                 key = self.id_despesa,
                                                                                  on_click=self.excluir_despesas))]) 
             
             
