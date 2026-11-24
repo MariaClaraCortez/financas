@@ -31,7 +31,8 @@ class CategoriaView(ft.View):
                                                           ft.Container(content=titulo),
                                                           ft.Container(expand=True,
                                                                        height=0.5,
-                                                                       bgcolor="#395F4A")])
+                                                                       bgcolor="#395F4A")],
+                                                                       margin=ft.Margin.only(bottom=20))
 
         
         self.campo_cadastrar = ft.TextField(label="Nome da Categoria",
