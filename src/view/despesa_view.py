@@ -55,7 +55,8 @@ class DespesaView(ft.View):
        self.lista_despesas.clear() 
 
        for despesas in todos:
-            linha= ft.DataRow(cells=[ft.DataCell(ft.Text(str(despesas.get("id_despesa")),text_align="center", size=17)),
+            id_despesa= str(despesas.get("id_despesa"))
+            linha= ft.DataRow(cells=[ft.DataCell(id_despesa),
                             ft.DataCell(ft.Text(str(despesas.get("tipo")),text_align="center", size=17)),
                             ft.DataCell(ft.Text(str(despesas.get("descricao")),text_align="center", size=17)),
                             ft.DataCell(ft.Text(str(despesas.get("valor")),text_align="center", size=17)),
@@ -65,7 +66,7 @@ class DespesaView(ft.View):
                                                                                  bgcolor="#9FC5B0",
                                                                                  width=45,
                                                                                  height=40,
-                                                                                 key = self.id_despesa,
+                                                                                 key =id_despesa,
                                                                                  on_click=self.excluir_despesas))]) 
             
             
