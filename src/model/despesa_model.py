@@ -37,9 +37,8 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            SELECT tb_despesas.login,tb_categorias.tipo,tb_despesas.descricao,tb_despesas.valor,tb_despesas.data,tb_despesas.id_despesa from tb_despesas
-                            inner join tb_categorias on tb_categorias.id_categoria = tb_despesas.id_categoria
-                            WHERE tb_despesas.login = %s
+                            SELECT login,id_categoria,descricao,valor,data,id_despesa from tb_despesas
+                           WHERE login = %s
                         """,[login])
             
             dados = cursor.fetchall()
@@ -60,7 +59,7 @@ class Despesa:
         
         try:
             cursor.execute("""
-                            SELECT login,id_categoria,descricao,valor,data from tb_despesas
+                            SELECT login,id_categoria,descricao,valor,data,id_despesa from tb_despesas
                            WHERE login = %s AND id_categoria = %s
                         """,[login,id_categoria])
             
